@@ -13,7 +13,8 @@
     --color-backgroundbotton: #3b4550;
     --color-card: #1e293b;
     --color-primaryLight : #09f;
-    --color-border: rgba(255, 255, 255, 0.1)
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-select:#242d3a;
     
 }
 
@@ -276,6 +277,7 @@ main > section:first-of-type form button:hover{
         flex-direction: column;
         text-align: center;
         padding: 5rem;
+        
     }
 
     #secionResultSearch h1{
@@ -283,7 +285,6 @@ main > section:first-of-type form button:hover{
         top: 8%;
         left: 50%;
         transform: translate(-50%, -50%);
-        
     }
     
     #secionResultSearch p{
@@ -294,17 +295,63 @@ main > section:first-of-type form button:hover{
        
     }
 
+     #secionResultados{
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        height: 150vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+     }
+     #secionResultados h2{
+        font-size: 2rem;
+        text-align: start;
+        padding: 1rem 0;
+     }
+     #secionResultados article{
+        background-color: var(--color-background);
+        padding: 1rem;
+        width: min(1000px, 90vw);
+        border: gray 1px solid;
+        border-radius: .2rem 0rem 0rem 0rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10rem;
+     }
+     #secionResultados article button{
+        background-color: var(--color-primaryLight);
+        border: none;   
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        color: var(--color-text);
+        font-weight: bolder;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+     }
 
+        #secionResultados article button:hover{
+            background-color: rgb(15, 119, 189);
+        }   
+   
     #formResultSearch{
+        
+        z-index: 1;
+        display: flex;
+        flex-direction:column;
         top: 25%;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content:center;
+        gap: 1rem;
+        
     }
 
     #formResultSearch svg{
-        top: 50%;
-        left: 2.5rem;
+        top: 32%;
+        left: 2.3rem;
         outline: none;
         color: var(--color-secondary);
     }
@@ -319,4 +366,30 @@ main > section:first-of-type form button:hover{
         background-color: #18212d;
         color: var(--color-text);
         font-size: 1rem;
+    }
+    #formResultSearch section {
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+    #formResultSearch section select{
+        position: relative;
+        width: min(180px);
+        align-items: center;
+        padding: .5rem;
+        border-radius: .5rem;
+        background-color: var(--color-select);
+        color: #9098a3;
+        z-index: 1000;
+        font-weight: bolder;
+    }
+    #formResultSearch section select option{
+        background-color: #06182a;
+        align-items: center;
+        color:#9098a3;
+        font-weight: bolder;  
     }
