@@ -429,7 +429,7 @@ main > section:first-of-type form button:hover{
         article:last-of-type{
             border-radius: 0rem 0rem 1rem 1rem;
         }
-        #button-search-job{
+        .button-search-job{
         background-color: var(--color-primaryLight);
         padding: .8rem;
         border-radius: .5rem;
@@ -437,13 +437,23 @@ main > section:first-of-type form button:hover{
         font-weight: bolder;
         border: none;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in;
+        
+        &.is-applied{
+            background-color: green;
+        }
+
+        &:disabled{
+            opacity: .5;
+            pointer-events: none;
+        }
         }
         
-        #button-search-job:hover{
-            background-color: black;
+        .button-search-job:hover{
+            background-color: rgb(7, 96, 138);
         }
         
+
 
     }
   
@@ -602,219 +612,4 @@ main > section:first-of-type form button:hover{
    
 
 
-    /* estilos de resultsearch
-
-    #secionResultSearch{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        
-        
-    }
-
-    #secionResultSearch h1{
-        position: absolute;
-        top: 8%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    #secionResultSearch p{
-        position: absolute;
-        top: 17%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-       
-    }
-    .perfil-icon{
-        display: flex;
-        gap: 20px;
-    }
-    body header:first-of-type button{
-        background-color: #0f2b44;
-        border-radius: 0.5rem;
-        border: none;
-        padding: 1rem;
-        color: #1171d0;
-        font-weight: bolder;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-
-    body header:first-of-type img{
-        border-radius: 100%;
-    }
-
-    body header:first-of-type button:hover{
-        background-color:#081a27 ;
-    }
-
-     #secionResultados{
-        position: absolute;
-        top: 12%;
-        left: 25%;
-        height: 120vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-     }
-     #secionResultados h2{
-        font-size: 2rem;
-        text-align: start;
-        padding: 1rem 0;
-     }
-     #secionResultados article{
-        background-color: var(--color-background);
-        padding: 1rem;
-        width: min(1000px, 90vw);
-        border: rgba(128, 128, 128, 0.507) 1px solid;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        
-     }
-
-     #secionResultados article:first-of-type{
-        border-radius: 1rem 1rem 0rem 0rem;
-     }
-     #secionResultados article:last-of-type{
-        border-radius: 0rem 0rem 1rem 1rem;
-     }
-    
-     #secionResultados article button{
-        background-color: var(--color-primaryLight);
-        border: none;   
-        padding: .5rem 1rem;
-        border-radius: .5rem;
-        color: var(--color-text);
-        font-weight: bolder;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-     }
-
-        #secionResultados article button:hover{
-            background-color: rgb(15, 119, 189);
-        }   
    
-    #formResultSearch{
-        
-        z-index: 1;
-        display: flex;
-        flex-direction:column;
-        top: 28%;
-        display: flex;
-        align-items: center;
-        justify-content:center;
-        gap: 1rem;
-        
-    }
-
-    #formResultSearch svg{
-        top: 30%;
-        left: 2.3rem;
-        outline: none;
-        color: var(--color-secondary);
-    }
-
-   #formResultSearch #busqueda{
-        width: min(150vh, 50vw);
-        height: 3rem;
-        padding-left: 2.5rem;
-        border: none;
-        border-radius: .8rem;
-        outline: none;
-        background-color: #18212d;
-        color: var(--color-text);
-        font-size: 1rem;
-    }
-
-
-    #formResultSearch section select{
-        position: relative;
-        width: min(180px);
-        align-items: center;
-        padding: .5rem;
-        border-radius: .5rem;
-        background-color: var(--color-select);
-        color: #9098a3;
-        z-index: 1000;
-        font-weight: bolder;
-    }
-    #formResultSearch section select option{
-        background-color: #06182a;
-        align-items: center;
-        color:#9098a3;
-        font-weight: bolder;  
-    }
-
-     .pagination{
-         display: flex;
-         position: absolute;
-         transform: translate(-50%,-50%);
-         top: 110%;
-         left: 50%;
-         gap: 20px;
-         align-items: center;
-         justify-content: center;
-     }
-     
-     .pagination .page-btn{
-         background: none;
-         border: none;
-         color: #9098a3;
-         font-size: 1rem;
-         cursor: pointer;
-         padding: 0.5rem 0.75rem;
-
-         transition: all 0.3s ease;
-     }
-     
-     .pagination .page-btn.active{
-         background-color: var(--color-primaryLight);
-         color: white;
-         border-radius: 0.25rem;
-     }
-     
-     .pagination .page-btn:hover:not(.disabled):not(.active){
-         color: var(--color-text);
-     }
-     
-     .pagination .page-btn.disabled{
-         color: #9098a3;
-         cursor: not-allowed;
-         opacity: 0.5;
-     }
-
-    /* Search bar layout to keep SVG inside input responsively */
-
-
-     /* dimensiones para resultsearch */
-/* 
-     @media (max-width: 768px) {
-        main > section:first-of-type h1 {
-             top: 18%; 
-             font-size: 25px;
-            
-            }
-        main > section:first-of-type p  { top: 30% }
-       
-       
-        #formResultSearch section select{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        #secionResultados{
-            top: 35%;
-            left: 8%;
-            width: min(100px, 45vw);
-            height: 150vh;
-        }
-         #formResultSearch #busqueda{
-             position: relative;
-             left: 200px;
-             width: min(800px, 50vw);
-         }
-        } */ 
