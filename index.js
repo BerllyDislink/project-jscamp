@@ -8,16 +8,41 @@
         
 //     })
 // });
-
 const seccionFilters = document.querySelector(".search-filters")
+const seccionResults = document.querySelector("#secionResultados")
 
-seccionFilters?.addEventListener('change', (event)=>{
-    const filtro = event.target //el event.target indica el elmento que se ve cambiando dentro de search-filters
+// Escucha cambios en el filtro
+seccionFilters?.addEventListener("change", (event) => {
+  const filtro = event.target.value.toLowerCase()
+  console.log("Filtro seleccionado:", filtro)
 
-    console.log(filtro) //imprime el elemento que se ve cambiado dentro de search-filters
+  // Selecciona todos los artículos dentro de la sección de resultados
+  const articulos = seccionResults.querySelectorAll("article")
 
+  articulos.forEach(article => {
+    // Obtiene el texto dentro de p y small (si existen)
+    const textoP = article.querySelector("p")?.textContent.toLowerCase() || ""
+    const textoSmall = article.querySelector("small")?.textContent.toLowerCase() || ""
+
+    // Condición: si el texto coincide con el filtro o el filtro es "todos"
+    if (
+      filtro === "todos" ||
+      textoP.includes(filtro) ||
+      textoSmall.includes(filtro)
+    ) {
+      article.style.display = "block"  // muestra el artículo
+    } else {
+      article.style.display = "none"   // oculta el artículo
+    }
+  })
 })
 
+
+
+seccionFilters?.addEventListener('change',(event)=>{
+    const filtro = event.target.value.toLowerCase() //el target es el elemento que disparó el evento, en este caso el select y el value es el valor que tiene ese elemento
+    console.log(filtro)
+})
 
 const seccionJob = document.querySelector('#secionResultados')
 
