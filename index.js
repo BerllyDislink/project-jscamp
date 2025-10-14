@@ -8,41 +8,31 @@
         
 //     })
 // });
-const seccionFilters = document.querySelector(".search-filters")
-const seccionResults = document.querySelector("#secionResultados")
+const seccionFilters = document.querySelector(".search-filters") //se selecciona en el documento a la seccion search-filters
+const seccionResults = document.querySelector("#secionResultados") // se selecciona en el documento a la seccionResultados
 
-// Escucha cambios en el filtro
-seccionFilters?.addEventListener("change", (event) => {
+seccionFilters?.addEventListener('change', (event)=>{ //se escuchan el evento realizado en la search-filters en este caso el evento de cambio y por cada evento de este tipo se guardará el objetivo presionado y su valor en la constante llamada filtro
   const filtro = event.target.value.toLowerCase()
-  console.log("Filtro seleccionado:", filtro)
+  console.log(filtro);
 
-  // Selecciona todos los artículos dentro de la sección de resultados
-  const articulos = seccionResults.querySelectorAll("article")
+  const articulos = seccionResults.querySelectorAll("article"); //se seleccionan todos los artículos dentro de la seccionResultados
 
-  articulos.forEach(article => {
-    // Obtiene el texto dentro de p y small (si existen)
-    const textoP = article.querySelector("p")?.textContent.toLowerCase() || ""
-    const textoSmall = article.querySelector("small")?.textContent.toLowerCase() || ""
+  articulos.forEach(articulo => { // se recorre el array artículo y cada uno de sus elementos
 
-    // Condición: si el texto coincide con el filtro o el filtro es "todos"
-    if (
-      filtro === "todos" ||
-      textoP.includes(filtro) ||
-      textoSmall.includes(filtro)
-    ) {
-      article.style.display = "block"  // muestra el artículo
-    } else {
-      article.style.display = "none"   // oculta el artículo
+    const textoP = articulo.querySelector("p")?.textContent.toLowerCase() || "" //se guarda una constante con el texto del párrafo en minusculas que contiene el artículo
+    const textoSmall = articulo.querySelector("small")?.textContent.toLowerCase() || "" // se guarda una constante con el texto small en minusculas que contiene el artículo
+
+    if(textoP.includes(filtro) || textoSmall.includes(filtro)){
+      articulo.style.display = "flex" //en caso de que el artículo cumpla con las condiciones se muestran los artículos que lo cumplan
+    }else{
+      articulo.style.display = "none" //se ocultan los articulos que no lo cumplen
     }
-  })
+    
+  });
 })
 
 
 
-seccionFilters?.addEventListener('change',(event)=>{
-    const filtro = event.target.value.toLowerCase() //el target es el elemento que disparó el evento, en este caso el select y el value es el valor que tiene ese elemento
-    console.log(filtro)
-})
 
 const seccionJob = document.querySelector('#secionResultados')
 
