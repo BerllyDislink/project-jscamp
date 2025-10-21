@@ -1058,3 +1058,294 @@ main > section:first-of-type form button:hover{
             
          }
      }
+
+     /* Estilos página login */
+
+     #header-login{
+        display: flex;
+        #nav-login{
+            a{
+                color:#9ca3af;
+                font-weight: bold;
+            }
+            
+        }
+        .button-nav{
+            
+            #button-post-job{
+                background-color:var(--color-backgroun-a);
+                color: var(--color-primaryLight);
+                padding: .5rem;
+                text-decoration: none;
+                font-weight: bold;
+                margin: auto;
+            }
+            #button-sign-in{
+                background-color: var(--color-primaryLight);
+                color: var(--color-text);
+                padding: .5rem;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+     }
+
+     main{
+        .tittle-login{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: 20vh;
+            padding-top: 5rem;
+        }
+        .card-login{
+            display: flex;
+            border: .1rem solid rgba(158, 158, 158, 0.274);
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            padding: 2.5rem;
+            max-width: 500px;
+            
+            margin: 0 auto;
+            border-radius: .5rem;
+            background-color:rgba(18, 28, 38)#1a1f2e ;
+            box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.3),
+        0 10px 10px -5px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+            
+        .email, .password{
+            width: 100%;
+            margin-bottom: 1rem;
+            position: relative;
+
+            svg{
+                position: absolute;
+                left: 1rem;
+                top:50% ;
+                transform: translateY(-50%);
+                color:#64748b;
+                z-index: 1;
+            }
+            input{
+                color: var(--color-text);
+                width: 100%;
+                padding: 1rem 1rem 1rem 3rem;
+                background-color:#0f172a ;
+                border: 1px solid #334155;
+                border-radius: 0.5rem;
+                font-size: 1rem;
+                transition: all 0.2s ease;
+
+                &::placeholder{
+                    color: #64748b;
+                }
+
+                &:focus{
+                    outline: none;
+                    border-color: #3b82f6;
+                    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+                }
+            }
+        }
+
+            .check-forgot{
+                padding: 0.5rem 0rem 0.5rem 0rem;
+                gap: .5rem;
+                display: flex;
+                justify-content: space-between;
+                margin: auto;
+                width: 400px;
+                .check{
+                    display: flex;
+                    gap: .5rem;
+                input{
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #555;
+                    border-radius: 4px;
+                    background-color: gray;
+                    cursor: pointer;
+                    position: relative;
+                    transition: background 0.3s, border-color 0.3s ;
+                }
+                
+                }
+                input:checked{
+                    background-color: #4CAF50;
+                    border-color: #4CAF50;
+                }
+
+                input:checked::after{
+                    content: '✔';
+                    color: white;
+                    font-size: 14px;
+                    position: absolute;
+                    top: 0;
+                    left: 3px;
+                }
+                .forgot{
+                    a{
+                        text-decoration: none;
+                        color:var(--color-primaryLight);
+                    }
+                }
+            }
+            button[type="submit"]{
+                width: 100%;
+                background-color: var(--color-primaryLight);
+                padding: 1rem .5rem 1rem .5rem;
+                color: var(--color-text);
+                font-weight: bold;
+                border-radius: .5rem;
+                border: none;
+                font-size: 1rem;
+                cursor: pointer;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                transition: all .3s ease;
+
+                &:hover{
+                    background-color:#053c61;
+                    transform: scale(95%);
+                }
+            }
+            
+        }
+        .type-user{
+            
+            text-align: center;
+
+            .buttons-type-user{
+                padding-top: 1rem;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+
+            button{
+                font-size:0.9rem;
+                padding: 1.5rem 1rem 1.5rem 1rem;
+                background-color: #06182a;
+                border: 1px solid rgba(128, 128, 128, 0.288);
+                color: var(--color-text);
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+
+                &:hover{
+                    background-color: #101c2b;
+                    transform: scale(95%);
+                }
+            }
+            }
+            .divider{
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: #ccc;
+                font-size: 1rem;
+                margin: 1rem 0;
+            }
+            .divider::before, .divider::after{
+                content: "";
+                flex: 1;
+                border-bottom: 1px solid #444;
+            }
+            .divider::before{
+                margin-right: 0.75rem;
+            }
+            .divider::after {
+                margin-left: 0.75em;
+              }
+        }
+     }
+
+     #menu-toggle {
+        display: none; /* oculto en pantallas grandes */
+        background: none;
+        border: none;
+        color: var(--color-primaryLight);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      
+    
+      
+
+     @media (max-width: 768px) {
+        /* Ajustes generales */
+        #menu-toggle {
+            display: flex;
+          }
+        body {
+          margin-bottom: 100px;
+        }
+
+        .tittle-login{
+            margin-bottom: 5rem;
+        }
+      
+        /* Header: apilar los elementos */
+        #header-login {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+      
+        #header-login h2 {
+          font-size: 1.2rem;
+        }
+      
+        #nav-login {
+          display: none; /* se ocultará por defecto en móviles */
+          flex-direction: column;
+          gap: 1rem;
+          width: 100%;
+        }
+        #nav-login.active{
+            display: flex;
+        }
+      
+        #nav-login a {
+          display: block;
+          padding: 0.5rem 0;
+        }
+      
+        .button-nav {
+          display: none; /* ocultamos los botones Sign in / Post a Job */
+        }
+        .button-nav.active{
+            display: flex;
+        }
+      
+        .card-mini{
+            padding: 1rem;
+        }
+        /* Card login más angosta */
+        .card-login {
+        
+          width: 100%;
+          padding: 1.5rem;
+          
+        }
+      
+        .check-forgot {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      
+        .type-user .buttons-type-user {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      
+        .type-user button {
+          width: 100%;
+        }
+      }
+      
