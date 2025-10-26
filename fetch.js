@@ -36,8 +36,11 @@ fetch("./data.json") //se obtiene los datos de los artículos
     </div>
     `
     
-
-    container.appendChild(article) // se guarda el article dentro del contenedor, que viene siendo su hijo.
+    document.addEventListener("DOMContentLoaded", ()=>{ // cuando se cargue todo el dom se crea el contenedor con los elementos artículos dentro
+        if(container){
+            container.appendChild(article) // se guarda el article dentro del contenedor, que viene siendo su hijo.
+        }
+    })
     });
     
 }))
