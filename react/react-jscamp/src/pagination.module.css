@@ -1,0 +1,29 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+    a{
+        display: flex;
+        gap: 3rem;
+        text-decoration: none;
+        width:2.5rem ;
+        height: 2.5rem;
+        color: var(--color-secondary);
+        font-weight: bolder;
+        border-radius: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+    }
+    a:hover{
+        background-color: #ffffff;
+        transform: scale(0.90);
+    }
+    a.isActive{
+        background-color: var(--color-primaryLight);
+        pointer-events:none;
+    }
+
+}

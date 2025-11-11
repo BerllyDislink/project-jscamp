@@ -1,34 +1,83 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
+import JobList from './pages/JobList'
+import Header from './components/Header'
+import FiltroBusqueda from './components/FiltroBusqueda'
+import Footer from './components/Footer'
+import { Pagination } from './components/pagination'
+
+import jobs from './data.json'
+
+const ITEMS_PER_PAGE = 3;
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [filters, setFilters] = useState({
+    technology: '',
+    location: '',
+    level: '',
+  })
+  const [textFilter, setTextFilter] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const filteredJobs = jobs.filter(job => {
+    const tech = job.data?.technology; // optional chaining para evitar undefined
+  
+    const techMatch =
+      filters.technology === '' ||
+      (Array.isArray(tech) ? tech.includes(filters.technology) : tech === filters.technology);
+  
+    const locationMatch = filters.location === '' || job.data?.modalidad === filters.location;
+    const levelMatch = filters.level === '' || job.data?.nivel === filters.level;
+  
+    // Solo incluye el trabajo si cumple todos los filtros
+    return techMatch && locationMatch && levelMatch;
+  });
+  
+  
+  const jobTextFilter = textFilter === '' ? filteredJobs : filteredJobs.filter(job => {
+    return job.titulo.toLowerCase().includes(textFilter.toLowerCase()) || job.empresa.toLowerCase().includes(textFilter.toLowerCase()) || job.descripcion.toLowerCase().includes(textFilter.toLowerCase())
+  })
+
+  const totalPages = Math.ceil(jobTextFilter.length / ITEMS_PER_PAGE)
+
+  const pagedResults = jobTextFilter.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE, // (1-1) * 4 = 0, (2-1) * 4 = 4 --> (0,4)
+    currentPage * ITEMS_PER_PAGE        // (1*4) = 4, (2*4) = 8         ---> (4,8) 
+  )
+
+  const handlePagechange = (page) =>{
+    setCurrentPage(page)
+  }
+
+  const handleFilterChange = (filters) =>{
+    setFilters(filters)
+    setCurrentPage(1)
+  }
+
+  const handleTextFilter = (newText) => {
+    setTextFilter(newText)
+    setCurrentPage(1)
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='app'>
+       <Header/>
+      <main>
+        <section id='secionResultSearch'>
+        <FiltroBusqueda filters={filters} onTextFilter={handleTextFilter} onChange={handleFilterChange} />
+        </section>
+        <section id='secionResultados'>
+          <>
+      <h2>
+        Trabajos disponibles
+      </h2>
+        <JobList jobs={pagedResults} />
+        </>
+        </section>
+       <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePagechange} />
+      </main>
+      <Footer/>
+    </div>
   )
 }
 
